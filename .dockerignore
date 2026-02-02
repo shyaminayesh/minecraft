@@ -1,0 +1,11 @@
+server.jar
+libraries/
+versions/
+world/
+logs/
+usercache.json
+server.properties
+ops.json
+whitelist.json
+banned-players.json
+banned-ips.json
