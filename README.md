@@ -21,7 +21,7 @@ A containerized Minecraft server with automatic version downloading and persiste
 
 1. Set up your configuration files:
 ```bash
-touch server.properties ops.json whitelist.json banned-players.json banned-ips.json
+touch server.properties ops.json whitelist.json banned-players.json banned-ips.json usercache.json
 ```
 
 2. Start the server:
@@ -56,6 +56,7 @@ docker run -d \
   -v ./whitelist.json:/app/whitelist.json \
   -v ./banned-players.json:/app/banned-players.json \
   -v ./banned-ips.json:/app/banned-ips.json \
+  -v ./usercache.json:/app/usercache.json \
   ghcr.io/shyaminayesh/minecraft:1.21.10
 ```
 
@@ -76,6 +77,7 @@ Edit `server.properties` to configure your server settings:
 - `whitelist.json` - Whitelisted players (if whitelist is enabled)
 - `banned-players.json` - Banned players
 - `banned-ips.json` - Banned IP addresses
+- `usercache.json` - Player name to UUID cache (auto-generated)
 
 ## File Structure
 
@@ -91,6 +93,7 @@ Edit `server.properties` to configure your server settings:
 ├── whitelist.json      # Whitelisted players (mounted)
 ├── banned-players.json # Banned players (mounted)
 ├── banned-ips.json     # Banned IPs (mounted)
+├── usercache.json      # Player UUID cache (mounted)
 └── world/              # World data (mounted)
 ```
 
@@ -105,6 +108,7 @@ The following files contain all your server data:
 - `whitelist.json` - Whitelisted players
 - `banned-players.json` - Banned players
 - `banned-ips.json` - Banned IPs
+- `usercache.json` - Player UUID cache (optional, regenerates automatically)
 
 ### Manual Backup
 
@@ -115,7 +119,8 @@ tar -czf minecraft-backup-$(date +%Y%m%d).tar.gz \
   ops.json \
   whitelist.json \
   banned-players.json \
-  banned-ips.json
+  banned-ips.json \
+  usercache.json
 ```
 
 ## Environment Variables

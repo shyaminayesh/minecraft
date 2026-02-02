@@ -12,6 +12,7 @@ services:
       - ./whitelist.json:/app/whitelist.json
       - ./banned-players.json:/app/banned-players.json
       - ./banned-ips.json:/app/banned-ips.json
+      - ./usercache.json:/app/usercache.json
     restart: unless-stopped
     stdin_open: true
     tty: true
