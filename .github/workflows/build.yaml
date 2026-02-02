@@ -26,7 +26,7 @@ jobs:
 
       - name: docker::build
         run:
-          docker build . --tag ghcr.io/shyaminayesh/minecraft:1.21.10
+          docker build --progress=plain --no-cache --tag ghcr.io/shyaminayesh/minecraft:1.21.10 .
 
       - name: docker::publish
         run:
