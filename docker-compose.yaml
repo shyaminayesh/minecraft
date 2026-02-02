@@ -1,0 +1,17 @@
+services:
+
+  minecraft:
+    image: ghcr.io/shyaminayesh/minecraft:1.21.10
+    container_name: minecraft
+    ports:
+      - "25565:25565"
+    volumes:
+      - ./world:/app/world
+      - ./server.properties:/app/server.properties
+      - ./ops.json:/app/ops.json
+      - ./whitelist.json:/app/whitelist.json
+      - ./banned-players.json:/app/banned-players.json
+      - ./banned-ips.json:/app/banned-ips.json
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
